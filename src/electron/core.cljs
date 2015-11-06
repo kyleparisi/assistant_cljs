@@ -12,7 +12,7 @@
                         (clj->js {:width 800
                                   :height 600})))
   ; Path is relative to the compiled js file (main.js in our case)
-  (.loadUrl @main-window (str "file://" __dirname "/index.html"))
+  (.loadUrl @main-window (str "file://" __dirname "/resources/public/index.html"))
   (.openDevTools @main-window)
   (.on @main-window "closed" #(reset! main-window nil)))
 

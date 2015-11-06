@@ -25,7 +25,8 @@
                   :source-map true}}
                 {:id "electron-dev",
                  :source-paths ["src/electron"], 
-                 :compiler {:output-to "resources/public/main.js",
+                 :compiler {
+                  :output-to "./main.js",
                   :optimizations :simple
                   :pretty-print true
                   :cache-analysis true}}]})
