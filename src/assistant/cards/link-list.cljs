@@ -16,7 +16,7 @@
     om/IRender
     (render [this]
       (apply dom/ul nil (map #(dom/li nil
-                                      (common/link (or (-> % :url) (-> % :href))
+                                      (common/link (or (-> % :href) (-> % :url))
                                                    (dom/img #js {:src (str "https://www.google.com/s2/favicons?domain=" (-> % :href))})
                                                    (-> % :title))
                                       (dom/p #js {:className "desc"} (-> % :desc))) (:content app))))))

@@ -22,7 +22,7 @@
 
 (enable-console-print!)
 
-(def gui (js/require "nw.gui"))
+(def gui (js/require "shell"))
 
 (def fs (js/require "fs"))
 
@@ -33,17 +33,6 @@
 ;; return config data
 (defn config []
   config-data)
-
-;; enable default menu
-(defn create-built-in-menu! []
-  (let [win (.get (.-Window gui)) ;; current window
-        Menu (.-Menu gui) ;; create menu
-        mb (Menu. #js {:type "menubar" })]
-    (.createMacBuiltin mb "Assistant")
-    (set! (.-menu win) mb)))
-
-
-(create-built-in-menu!)
 
 (defn read-app-state []
   "read app state from ~/.assistant-store"
@@ -70,13 +59,6 @@
 (defn put-result [result]
   "Put a result into channel"
   (go (>! dispatcher-chan result)))
-
-(let [win (.get (.-Window gui))
-      w (t/writer :json)]
-  (.on win "close" #(this-as me (do
-                                  (print "Start writing....")
-                                  (utils/write-to-file (str (utils/user-home) "/.assistant-store" ) (t/write w @app-state))
-                                  (.close me true)))))
 
 
 (defn handle-change [e owner {:keys [text]}]
@@ -148,7 +130,7 @@
                           :onChange #(handle-change % owner state)
                           :onKeyDown #(when (== (.-keyCode %) 13)
                                          (dispatch-input dispatcher-chan (:text state))
-                                         (om/set-state! owner :text ""))} "")
+                                         (om/set-state! owner :text ""))})
           (dom/div #js {:className "conversation"}
                    (if (= (count all-cards) 0)
                      (empty-card)

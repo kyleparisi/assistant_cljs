@@ -11,7 +11,7 @@
 
 (def url "http://api.dribbble.com/shots/popular")
 
-(def gui (js/require "nw.gui"))
+(def gui (js/require "shell"))
 
 (defn dribble-dispatcher [result-chan text]
   (go (let [response (<! (http/get url {:with-credentials? false}))

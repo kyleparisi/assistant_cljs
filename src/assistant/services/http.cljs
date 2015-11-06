@@ -18,7 +18,7 @@
                   :status "code"
                   :method "method"})
 
-(def gui (js/require "nw.gui"))
+(def gui (js/require "shell"))
 
 (defn http-dispatcher [result-chan text]
   (go (let [url (get urls (keyword text))
