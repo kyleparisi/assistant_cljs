@@ -9,7 +9,8 @@
                  [org.omcljs/om "1.0.0-alpha14"]
                  [com.cognitect/transit-cljs "0.8.188"]
                  [garden "1.2.1"]
-                 [markdown-clj "0.9.54"]]
+                 [markdown-clj "0.9.54"]
+                 [figwheel-sidecar "0.4.0" :scope "provided"]]
 
   :plugins [[lein-cljsbuild "1.0.6-SNAPSHOT"]]
 

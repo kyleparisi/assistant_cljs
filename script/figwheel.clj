@@ -7,11 +7,11 @@
    :all-builds
    [{:id "dev"
      :figwheel true
-     :source-paths ["src"]
-     :compiler {:main 'assistant.core
-                :asset-path "js"
-                :output-to "resources/public/js/main.js"
-                :output-dir "resources/public/js"
-                :verbose true}}]})
-
+     :source-paths ["src/assistant" "plugins"]
+     :compiler {
+      :output-to "resources/public/assistant.js"
+      :output-dir "resources/public/out"
+      :optimizations :none
+      :source-map true}}]})
+    
 (ra/cljs-repl)
